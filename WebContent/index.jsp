@@ -28,14 +28,15 @@
 		<form method="get" action="Register">
 			<label for="id">Student ID: </label> 
 				<input id="id" type="text" name="id" value=""> <br/><br/>
+			<label for="name">Name:</label> 
+				<input id="name" type="text" name="name" value="">
+				<br/><br/>
 			<label for="id">Department: </label> 
 				<input id="depart" type="text" name="depart" value=""> <br/><br/>
 			<label for="pw">Password:</label> 
 				<input id="pw" type="password" name="pw" value="">
 				<br/><br/>
 				<input type="hidden" name="mark1" value=0>
-				<input type="hidden" name="mark2" value=0>
-				<input type="hidden" name="mark3" value=0>
 			<input type="submit" value="Signup">
 			</form>
 	</center>

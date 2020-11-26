@@ -48,22 +48,16 @@ public class Login extends HttpServlet {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3306/db1?useTimezone=true&serverTimezone=UTC", "root", "1234");
-			PreparedStatement stmt = conn.prepareStatement("select (mark1 + mark2 + mark3)/3 as average, pw, mark1, mark2, mark3 from student where id = ?");
+			PreparedStatement stmt = conn.prepareStatement("select pw from student where id = ?");
 			stmt.setString(1, id);
 			ResultSet rs = stmt.executeQuery();
 	
 			while (rs.next()) {
 				String holder = rs.getString("pw");
-				avg = rs.getString("average");
-				marks[0] = rs.getInt("mark1");
-				marks[1] = rs.getInt("mark2");
-				marks[2] = rs.getInt("mark3");
 				if (pw.equals(holder)) {
 					session.setAttribute("id", id);
 					session.setAttribute("pw", pw);
-					session.setAttribute("avg", avg);
-					session.setAttribute("marks", marks);
-					response.sendRedirect("/Servlet_Prac/menu.jsp");
+					response.sendRedirect(request.getContextPath() + "/StudentList");
 				} else {
 					out.print("<h1>Success5</h1>");
 					System.out.print(id + pw);
@@ -73,7 +67,6 @@ public class Login extends HttpServlet {
 			System.out.println(e);
 		}
 
-		
 		out.println("<h1></h1>");
 	}
 

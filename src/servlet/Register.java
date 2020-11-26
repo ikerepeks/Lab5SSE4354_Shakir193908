@@ -32,7 +32,8 @@ public class Register extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		String pw = request.getParameter("pw");
 		String depart = request.getParameter("depart");
-		int[] marks = {Integer.parseInt(request.getParameter("mark1")),Integer.parseInt(request.getParameter("mark2")),Integer.parseInt(request.getParameter("mark3"))};
+		String name = request.getParameter("name");
+		int marks = Integer.parseInt(request.getParameter("mark1"));
 		
 		try {
 			
@@ -40,13 +41,17 @@ public class Register extends HttpServlet {
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db1?useTimezone=true&serverTimezone=UTC",
 				"root", "1234");
 
-			PreparedStatement stmt = conn.prepareStatement("insert into student values (?,?,?,?,?,?)");
+			PreparedStatement stmt = conn.prepareStatement("insert into student values (?,?,?,?,?,?,?,?,?,?)");
 			stmt.setInt(1, id);
 			stmt.setString(2, pw);
-			stmt.setString(3, depart);
-			stmt.setInt(4, marks[0]);
-			stmt.setInt(5, marks[1]);
-			stmt.setInt(6, marks[2]);
+			stmt.setString(3, name);
+			stmt.setString(4, depart);
+			stmt.setInt(5, marks);
+			stmt.setInt(6, marks);
+			stmt.setInt(7, marks);
+			stmt.setInt(8, marks);
+			stmt.setInt(9, marks);
+			stmt.setInt(10, marks);
 			stmt.executeUpdate();
 			response.sendRedirect("/Servlet_Prac/index.jsp");
 		}catch (Exception e) {
