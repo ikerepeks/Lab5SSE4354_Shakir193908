@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import java.sql.*;
+import java.util.Base64;
 
 /**
  * Servlet implementation class Login
@@ -53,7 +54,9 @@ public class Login extends HttpServlet {
 			ResultSet rs = stmt.executeQuery();
 	
 			while (rs.next()) {
+				session.setMaxInactiveInterval(5*60);
 				String holder = rs.getString("pw");
+				holder = new String(Base64.getDecoder().decode(holder));
 				if (pw.equals(holder)) {
 					session.setAttribute("id", id);
 					session.setAttribute("pw", pw);

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
+import java.util.Base64;
 
 /**
  * Servlet implementation class Register
@@ -28,9 +29,9 @@ public class Register extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		String encoded = Base64.getEncoder().encodeToString(request.getParameter("pw").getBytes());
 		int id = Integer.parseInt(request.getParameter("id"));
-		String pw = request.getParameter("pw");
+		String pw = encoded;
 		String depart = request.getParameter("depart");
 		String name = request.getParameter("name");
 		int marks = Integer.parseInt(request.getParameter("mark1"));

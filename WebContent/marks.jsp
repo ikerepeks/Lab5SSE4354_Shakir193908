@@ -3,17 +3,23 @@
 <%@page import="java.sql.*"%>
 
  <%
+ int[] marks = new int[6];
+ int avg = 0;
+ if(session.getAttribute("id") == null){
+	 response.sendRedirect("index.jsp");
+ }
+ else{
  String id = session.getAttribute("id").toString();
  String pw = session.getAttribute("pw").toString();
- int[] marks = (int[])session.getAttribute("marks");
+ marks = (int[])session.getAttribute("marks");
  int total = 0;
  
  for (int i = 0; i < marks.length; i++){
 	 total = total + marks[i];
  }
  
- int avg = total/ marks.length;
- 
+ avg = total/ marks.length;
+ }
  %>
  
 <!DOCTYPE html>

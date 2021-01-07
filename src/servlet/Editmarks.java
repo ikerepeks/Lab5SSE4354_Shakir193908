@@ -34,6 +34,9 @@ public class Editmarks extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(false);
 		
+		if(session == null){
+			 response.sendRedirect("index.jsp");
+		 }else {
 		String id = session.getAttribute("id").toString();
 		String year = request.getParameter("year");
 		String mark1 = request.getParameter("mark1");
@@ -68,6 +71,7 @@ public class Editmarks extends HttpServlet {
 		}catch(Exception e) {
 			System.out.print(e);
 		}
+		 }
 				
 	}
 
