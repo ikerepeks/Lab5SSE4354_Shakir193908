@@ -1,3 +1,18 @@
+# Enterprise Web Services Practical Lab Exercise
+
+**Functionalitiees**
+
+1. Register and Login
+
+2. Get student list from database
+
+3. Get student marks from database
+
+4. Edit student marks
+
+5. Log Out
+
+
 # ORA ORA GROUP
 
 Architecture - Iman Baharuddin<br/>  10. Add some animation to the website
